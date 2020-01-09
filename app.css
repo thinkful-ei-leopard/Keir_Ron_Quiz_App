@@ -20,10 +20,31 @@ body {
     margin: 0 auto;
 }
 
-@media screen and (min-width: 500px) {
+img {
+    width:50%;
+}
 
+form {
+    display: flex; 
+    flex-direction: column-reverse;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+@media screen and (min-width: 500px) {
+    body {
+        background-color: red;
+    }
+
+    form {
+        flex-direction: row;
+    }
 }
   
 @media screen and (min-width: 800px) {
-
+    body {
+        background-color: blue;
+    }
 }

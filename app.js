@@ -76,3 +76,31 @@ const store = {
    // We might want to use a factory function (or classes) and closure to create
    // instances of the "The Question Page" since it will be very simliar, but with 
    // different data inside
+
+
+// The wireframe for the "Question" View
+//    <div class="container">
+//    <form>
+//    <fieldset>
+//        <legend>Choose your favorite monster</legend>
+//        <!-- Added BRs to the ends of each radio button so they stack
+//             We can either do that or put every pair in a div-->
+//        <input type="radio" id="kraken" name="monster">
+//        <label for="kraken">Kraken</label><br>
+   
+//        <input type="radio" id="sasquatch" name="monster">
+//        <label for="sasquatch">Sasquatch</label><br>
+   
+//        <input type="radio" id="mothman" name="monster">
+//        <label for="mothman">Mothman</label><br>
+
+//        <input type="radio" id="dragon" name="monster">
+//        <label for="dragon">Dragon</label><br>
+       
+//        <button type="submit">Submit</button>
+//    </fieldset>
+//    <img src="/Images/dice.jpg" alt="numerous dice">
+//    </form>
+   
+//    <h2>Question 2 of 5</h2>
+// </div>
