@@ -1,6 +1,6 @@
 'use strict';
 
-const store = {
+const STORE = {
   // 5 or more questions are required
   questions: [
     {
@@ -107,6 +107,10 @@ function renderQuiz() {
     // feedbackWrongView()
 
     console.log('`renderQuiz` ran');
+    if(STORE.quizStarted === false) {
+        $('main').html(introView());
+        return;
+    }
 }
 
 
@@ -114,6 +118,14 @@ function renderQuiz() {
 
 function introView() {
     // this function handles the loading of introView page
+    console.log('working');
+    return `
+        <div class="container">
+        <form>
+            <button type="submit">Start Quiz</button>
+        </form>
+        </div>
+    `;
 }
 
 function questionView(){
@@ -191,11 +203,11 @@ function handleQuiz() {
 // Wireframe for "Intro" View
 // =========================================================================
 // <div class="container">
-//    <form>
-//        <button type="submit">Start Quiz</button>
-//    </form>
+// <form>
+//     <button type="submit">Start Quiz</button>
+// </form>
 // </div>
-//
+
 
 // The wireframe for the "Question" View
 // =========================================================================
