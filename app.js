@@ -35,7 +35,7 @@ const store = {
         correctAnswer: 'Orc'
       },
       {
-        question: 'Which of these dice are used for an Attack Roll?',
+        question: 'Which of these dice are used for an Initiative Roll?',
         answers: [
           'D4',
           'D8',
@@ -78,6 +78,14 @@ const store = {
    // different data inside
 
 
+// Wireframe for "Intro" View
+// <div class="container">
+//    <form>
+//        <button type="submit">Start Quiz</button>
+//    </form>
+// </div>
+//
+
 // The wireframe for the "Question" View
 //    <div class="container">
 //    <form>
@@ -103,4 +111,22 @@ const store = {
 //    </form>
    
 //    <h2>Question 2 of 5</h2>
+// </div>
+
+// The wireframe for "Correct" feedback View
+// <div class="container">
+// <h2>Correct!</h2>
+
+// <img src="/Images/correct.svg" alt="">
+
+// <section>
+//     <p>Current Score</p>
+//     <p>Right: 2</p>
+//     <p>Wrong: 1</p>
+// </section>
+
+// <form>
+//     <!--We might want to change the text to "finish quiz" on the last question-->
+//     <button type="submit">Next Question<button>
+// </form>
 // </div>

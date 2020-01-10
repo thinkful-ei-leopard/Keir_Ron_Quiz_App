@@ -18,29 +18,20 @@
   </header>
   <main>
     <div class="container">
-        <form>
-        <fieldset>
-            <legend>Choose your favorite monster</legend>
-            <!-- Added BRs to the ends of each radio button so they stack
-                 We can either do that or put every pair in a div-->
-            <input type="radio" id="kraken" name="monster">
-            <label for="kraken">Kraken</label><br>
-        
-            <input type="radio" id="sasquatch" name="monster">
-            <label for="sasquatch">Sasquatch</label><br>
-        
-            <input type="radio" id="mothman" name="monster">
-            <label for="mothman">Mothman</label><br>
+        <h2>Correct!</h2>
 
-            <input type="radio" id="dragon" name="monster">
-            <label for="dragon">Dragon</label><br>
-            
-            <button type="submit">Submit</button>
-        </fieldset>
-        <img src="/Images/dice.jpg" alt="numerous dice">
+        <img src="/Images/correct.svg" alt="">
+
+        <section>
+            <p>Current Score</p>
+            <p>Right: 2</p>
+            <p>Wrong: 1</p>
+        </section>
+
+        <form>
+            <!--We might want to change the text to "finish quiz" on the last question-->
+            <button type="submit">Next Question<button>
         </form>
-        
-        <h2>Question 2 of 5</h2>
     </div>
   </main>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
