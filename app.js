@@ -113,7 +113,7 @@ function renderQuiz() {
         return;
     }
     else if(STORE.questionNumber < STORE.questions.length && STORE.questionNumber >= 0) {
-        console.log('working 2');
+        console.log('render part 2 works');
         $('main').html(questionView());
     }
 }
@@ -139,24 +139,24 @@ function questionView(){
     return `<div class="container">
     <form>
     <fieldset>
-        <legend>Which of these dice are used for an Initiative roll?</legend>
+        <legend>${STORE.questions[STORE.questionNumber].question}</legend>
         <div>
             <!-- tabindex="1" lets you use tab to move through Radio buttons
                  and "required" makes it so an answer is required-->
-            <input type="radio" id="kraken" name="monster" tabindex="1" required>
-            <label for="kraken">D4</label>
+            <input type="radio" id="answer-1" name="monster" tabindex="1" required>
+            <label for="answer-1">${STORE.questions[STORE.questionNumber].answers[0]}</label>
         </div>
         <div>
-            <input type="radio" id="sasquatch" name="monster" tabindex="1" required>
-            <label for="sasquatch">D8</label>
+            <input type="radio" id="answer-2" name="monster" tabindex="1" required>
+            <label for="answer-2">${STORE.questions[STORE.questionNumber].answers[1]}</label>
         </div>
         <div>
-            <input type="radio" id="mothman" name="monster" tabindex="1" required>
-            <label for="mothman">D10</label>
+            <input type="radio" id="answer-3" name="monster" tabindex="1" required>
+            <label for="answer-3">${STORE.questions[STORE.questionNumber].answers[2]}</label>
         </div>
         <div>
-            <input type="radio" id="dragon" name="monster" tabindex="1" required>
-            <label for="dragon">D20</label>
+            <input type="radio" id="answer-4" name="monster" tabindex="1" required>
+            <label for="answer-4">${STORE.questions[STORE.questionNumber].answers[3]}</label>
         </div>
     
         <button type="submit">Submit</button>
@@ -164,7 +164,7 @@ function questionView(){
     <img src="/images/dice.jpg" alt="numerous dice">
     </form>
     
-    <h2>Question 2 of 5</h2>
+    <h2>Question ${STORE.questionNumber+1} of ${STORE.questions.length}</h2>
     </div>`;
 }
 
