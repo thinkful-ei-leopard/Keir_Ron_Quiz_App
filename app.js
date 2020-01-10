@@ -54,6 +54,7 @@ const store = {
       correctAnswer: '14'
     }
   ],
+  quizStarted: false,
   questionNumber: 0,
   score: 0
 };
@@ -75,6 +76,7 @@ const store = {
 // instances of the "The Question Page" since it will be very simliar, but with 
 // different data inside
 
+//  EVERY TIME YOU CHANGE THE STORE, RUN THE RENDER FUNCTION!
 
 // USER STORIES
 // The starter page should have a button to start the quiz => renderQuiz() and introView()
@@ -91,6 +93,8 @@ const store = {
 
 function renderQuiz() {
     // this function is responsible for rendering the Quiz in the DOM
+    // Tries to render multiple different templates to the page depending
+    // on which View should be shown
     console.log('`renderQuiz` ran');
 }
 
@@ -138,15 +142,16 @@ function updateQuestionNumber() {
 }
 // this function will be our callback when the page loads. it's responsible for
 // initially rendering the quiz, and activating our individual functions
-function main() {
+function handleQuiz() {
     renderQuiz();
-    // handleNewItemSubmit();
-    // handleItemCheckClicked();
-    // handleDeleteItemClicked();
+    handleStartClick();
+    handleNextQuestionClick();
+    handleQuestionFormSubmission();
+    handleRestartButtonClick();
   }
   
-// when the page loads, call `main`
-  $(main);
+// when the page loads, call `handleQuiz`
+  $(handleQuiz);
 
 // Wireframe for "Intro" View
 // =========================================================================
@@ -164,19 +169,21 @@ function main() {
 // <fieldset>
 //     <legend>Which of these dice are used for an Initiative roll?</legend>
 //     <div>
-//         <input type="radio" id="kraken" name="monster">
+//         <!-- tabindex="1" lets you use tab to move through Radio buttons
+//              and "required" makes it so an answer is required-->
+//         <input type="radio" id="kraken" name="monster" tabindex="1" required>
 //         <label for="kraken">D4</label>
 //     </div>
 //     <div>
-//         <input type="radio" id="sasquatch" name="monster">
+//         <input type="radio" id="sasquatch" name="monster" tabindex="1" required>
 //         <label for="sasquatch">D8</label>
 //     </div>
 //     <div>
-//         <input type="radio" id="mothman" name="monster">
+//         <input type="radio" id="mothman" name="monster" tabindex="1" required>
 //         <label for="mothman">D10</label>
 //     </div>
 //     <div>
-//         <input type="radio" id="dragon" name="monster">
+//         <input type="radio" id="dragon" name="monster" tabindex="1" required>
 //         <label for="dragon">D20</label>
 //     </div>
     

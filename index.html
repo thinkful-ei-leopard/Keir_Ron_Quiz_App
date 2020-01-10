@@ -16,7 +16,8 @@
       <!-- is this H1 ok here if its on each page for the design?-->
       <h1>Dungeons and Dragons Quiz</h1>
   </header>
-  <main>
+  <!-- aria-live="polite" tells the screenreader to watch out for changing content in the main element-->
+  <main aria-live="polite"> 
 
     <!-- Remove this content from HTML and put in JS
         HTML is here for an example to work with while making website-->
@@ -25,19 +26,19 @@
         <fieldset>
             <legend>Which of these dice are used for an Initiative roll?</legend>
             <div>
-                <input type="radio" id="kraken" name="monster">
+                <input type="radio" id="kraken" name="monster" tabindex="1" required>
                 <label for="kraken">D4</label>
             </div>
             <div>
-                <input type="radio" id="sasquatch" name="monster">
+                <input type="radio" id="sasquatch" name="monster" tabindex="1" required>
                 <label for="sasquatch">D8</label>
             </div>
             <div>
-                <input type="radio" id="mothman" name="monster">
+                <input type="radio" id="mothman" name="monster" tabindex="1" required>
                 <label for="mothman">D10</label>
             </div>
             <div>
-                <input type="radio" id="dragon" name="monster">
+                <input type="radio" id="dragon" name="monster" tabindex="1" required>
                 <label for="dragon">D20</label>
             </div>
             
