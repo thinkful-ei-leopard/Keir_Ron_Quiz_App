@@ -107,9 +107,14 @@ function renderQuiz() {
     // feedbackWrongView()
 
     console.log('`renderQuiz` ran');
+    // if the quiz hasnt started, 
     if(STORE.quizStarted === false) {
         $('main').html(introView());
         return;
+    }
+    else if(STORE.questionNumber < STORE.questions.length && STORE.questionNumber >= 0) {
+        console.log('working 2');
+        $('main').html(questionView());
     }
 }
 
@@ -118,11 +123,11 @@ function renderQuiz() {
 
 function introView() {
     // this function handles the loading of introView page
-    console.log('working');
+    console.log('introView working');
     return `
         <div class="container">
         <form>
-            <button type="submit">Start Quiz</button>
+            <button type="submit" id="start-quiz-button">Start Quiz</button>
         </form>
         </div>
     `;
@@ -130,6 +135,37 @@ function introView() {
 
 function questionView(){
     // We may need a factory function or class to change data as question changes
+    console.log('question view works');
+    return `<div class="container">
+    <form>
+    <fieldset>
+        <legend>Which of these dice are used for an Initiative roll?</legend>
+        <div>
+            <!-- tabindex="1" lets you use tab to move through Radio buttons
+                 and "required" makes it so an answer is required-->
+            <input type="radio" id="kraken" name="monster" tabindex="1" required>
+            <label for="kraken">D4</label>
+        </div>
+        <div>
+            <input type="radio" id="sasquatch" name="monster" tabindex="1" required>
+            <label for="sasquatch">D8</label>
+        </div>
+        <div>
+            <input type="radio" id="mothman" name="monster" tabindex="1" required>
+            <label for="mothman">D10</label>
+        </div>
+        <div>
+            <input type="radio" id="dragon" name="monster" tabindex="1" required>
+            <label for="dragon">D20</label>
+        </div>
+    
+        <button type="submit">Submit</button>
+    </fieldset>
+    <img src="/images/dice.jpg" alt="numerous dice">
+    </form>
+    
+    <h2>Question 2 of 5</h2>
+    </div>`;
 }
 
 function feedbackRightView(){
@@ -172,6 +208,12 @@ function updateQuestionNumber() {
 function handleStartQuizClick() {
     // Handles click of the "Start Quiz" button on Intro View
     // It should load the FIRST QuestionView()
+    $('body').on('click', '#start-quiz-button', event => {
+        event.preventDefault();
+        console.log('start button works');
+        STORE.quizStarted = true;
+        renderQuiz();
+    });
 }
 function handleSubmitClick(){
     // Handles click of the "Submit" button on the Question View
@@ -217,7 +259,7 @@ function handleQuiz() {
 //     <legend>Which of these dice are used for an Initiative roll?</legend>
 //     <div>
 //         <!-- tabindex="1" lets you use tab to move through Radio buttons
-//              and "required" makes it so an answer is required-->
+//             and "required" makes it so an answer is required-->
 //         <input type="radio" id="kraken" name="monster" tabindex="1" required>
 //         <label for="kraken">D4</label>
 //     </div>
@@ -233,7 +275,7 @@ function handleQuiz() {
 //         <input type="radio" id="dragon" name="monster" tabindex="1" required>
 //         <label for="dragon">D20</label>
 //     </div>
-    
+
 //     <button type="submit">Submit</button>
 // </fieldset>
 // <img src="/images/dice.jpg" alt="numerous dice">
