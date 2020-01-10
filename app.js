@@ -76,13 +76,11 @@ const store = {
 // instances of the "The Question Page" since it will be very simliar, but with 
 // different data inside
 
-//  EVERY TIME YOU CHANGE THE STORE, RUN THE RENDER FUNCTION!
-
 // USER STORIES
 // The starter page should have a button to start the quiz => renderQuiz() and introView()
 // Users will get prompted through 5 multiple choice questions they can answer => questionView()
 //      -Users should be asked one question at a time
-//      -Users should be asked one question after another (Question View -> Results View -> new Question View) => changeView()
+//      -Users should be asked one question after another (Question View -> Results View -> new Question View) => handleBUTTON
 // Users should be able to see what question they are on (update store.questionNumber)
 // Upon submitting answers, users should:
 //      -receive text feedback about their answer, if incorrect then tell them the right answer
@@ -90,13 +88,26 @@ const store = {
 // Users should be able to see their overall score at the end of the quiz (store.score) -> resultsView()
 // Users should be able to start a new quiz at the end -> restartQuiz()
 
+    // General FLOW 
+    // ie introView -> "Start Quiz" -> QuestionView1 -> "Submit Answer" -> 
+    // feedbackRightView OR feedbackWrongView -> "Next Question" -> QuestionView2 ->
+    // {...} -> resultsView -> "New Game" -> introView
+    // it should run evaluateAnswer() to determine whether to load feedbackRightView() or
+    // feedbackWrongView()
 
+    //  EVERY TIME YOU CHANGE THE STORE, RUN THE RENDER FUNCTION!
+
+
+/*********** Render  **************/
 function renderQuiz() {
     // this function is responsible for rendering the Quiz in the DOM
     // Tries to render multiple different templates to the page depending
     // on which View should be shown
     console.log('`renderQuiz` ran');
 }
+
+
+/**************** View HTML Templates  ***************/
 
 function introView() {
     // this function handles the loading of introView page
@@ -118,36 +129,51 @@ function resultsView(){
      // this function handles the loading of resultsView() page
 }
 
+
+/***************** Changing Data *******************/
+
 function restartQuiz() {
      // when the "New Game" button is pressed, start the quiz over at the beginning
      // ie load introView() and reset any data about the score and question number
 }
 
 function evaluateAnswer() {
-
-}
-
-function changeView() {
-    // this  function will handle the views changing when buttons are pressed
-    // ie introView -> "Start Quiz" -> QuestionView1 -> "Submit Answer" -> 
-    // feedbackRightView OR feedbackWrongView -> "Next Question" -> QuestionView2 ->
-    // {...} -> resultsView -> "New Game" -> introView
-    // it should run evaluateAnswer() to determine whether to load feedbackRightView() or
-    // feedbackWrongView()
+    // checks if the selected answer (from radio button) is correct Answer
 }
 
 function updateQuestionNumber() {
     // this function will change the value of store.questionNumber after
     // "Submit Answer" is pressed
 }
+
+/******************* Handle Button Press (Event Listeners) ********************/
+
+function handleStartQuizClick() {
+    // Handles click of the "Start Quiz" button on Intro View
+    // It should load the FIRST QuestionView()
+}
+function handleSubmitClick(){
+    // Handles click of the "Submit" button on the Question View
+    // it should run evaluateAnswer() to determine whether to load feedbackRightView() or
+    // feedbackWrongView()
+}
+function handleNextQuestionClick() {
+    // Handles click of "Next Question" button on feedbackRightView or feedbackWrongView
+    // it should run updateQuestionNumber() load the next QuestionView()
+}
+function handleNewGameClick() {
+    // Handles click of "New Game" on the Results View
+}
+
+
 // this function will be our callback when the page loads. it's responsible for
 // initially rendering the quiz, and activating our individual functions
 function handleQuiz() {
     renderQuiz();
-    handleStartClick();
+    handleStartQuizClick();
+    handleSubmitClick();
     handleNextQuestionClick();
-    handleQuestionFormSubmission();
-    handleRestartButtonClick();
+    handleNewGameClick();
   }
   
 // when the page loads, call `handleQuiz`
