@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
 }
 
@@ -34,9 +34,6 @@ h1, h2 {
 }
 
 @media screen and (min-width: 500px) {
-    body {
-        background-color: red;
-    }
 
     form {
         flex-direction: row;
@@ -44,7 +41,5 @@ h1, h2 {
 }
   
 @media screen and (min-width: 800px) {
-    body {
-        background-color: blue;
-    }
+
 }
