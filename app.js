@@ -79,6 +79,7 @@ const store = {
 
 
 // Wireframe for "Intro" View
+// =========================================================================
 // <div class="container">
 //    <form>
 //        <button type="submit">Start Quiz</button>
@@ -87,6 +88,7 @@ const store = {
 //
 
 // The wireframe for the "Question" View
+// =========================================================================
 //    <div class="container">
 //    <form>
 //    <fieldset>
@@ -114,6 +116,7 @@ const store = {
 // </div>
 
 // The wireframe for "Correct" feedback View
+// =========================================================================
 // <div class="container">
 // <h2>Correct!</h2>
 
@@ -128,5 +131,40 @@ const store = {
 // <form>
 //     <!--We might want to change the text to "finish quiz" on the last question-->
 //     <button type="submit">Next Question<button>
+// </form>
+// </div>
+
+
+// The wireframe for the "Incorrect" feeback View
+// =========================================================================
+{/* <div class="container">
+<h2>Incorrect!</h2>
+
+<h3>The right answer was: </h3>
+
+<section>
+    <p>Current Score</p>
+    <p>Right: 2</p>
+    <p>Wrong: 1</p>
+</section>
+
+<form>
+    <!--We might want to change the text to "finish quiz" on the last question-->
+    <button type="submit">Next Question<button>
+</form>
+</div> */}
+
+// The wireframe for the Results View
+// =========================================================================
+// <div class="container">
+// <h2>End of Game</h2>
+// <section>
+//     <p>Final Score</p>
+//     <p>Right: 2</p>
+//     <p>Wrong: 1</p>
+// </section>
+// <form>
+//     <!--We might want to change the text to "finish quiz" on the last question-->
+//     <button type="submit">New Game<button>
 // </form>
 // </div>
