@@ -88,13 +88,6 @@ const store = {
 // Users should be able to see their overall score at the end of the quiz (store.score) -> resultsView()
 // Users should be able to start a new quiz at the end -> restartQuiz()
 
-    // General FLOW 
-    // ie introView -> "Start Quiz" -> QuestionView1 -> "Submit Answer" -> 
-    // feedbackRightView OR feedbackWrongView -> "Next Question" -> QuestionView2 ->
-    // {...} -> resultsView -> "New Game" -> introView
-    // it should run evaluateAnswer() to determine whether to load feedbackRightView() or
-    // feedbackWrongView()
-
     //  EVERY TIME YOU CHANGE THE STORE, RUN THE RENDER FUNCTION!
 
 
@@ -103,6 +96,16 @@ function renderQuiz() {
     // this function is responsible for rendering the Quiz in the DOM
     // Tries to render multiple different templates to the page depending
     // on which View should be shown
+    // The logic for which page should load goes into renderQuiz
+    // whenever store data is changed, run renderQuiz() to continue with logic
+    
+    // General FLOW 
+    // ie introView -> "Start Quiz" -> QuestionView1 -> "Submit Answer" -> 
+    // feedbackRightView OR feedbackWrongView -> "Next Question" -> QuestionView2 ->
+    // {...} -> resultsView -> "New Game" -> introView
+    // it should run evaluateAnswer() to determine whether to load feedbackRightView() or
+    // feedbackWrongView()
+
     console.log('`renderQuiz` ran');
 }
 
@@ -130,6 +133,7 @@ function resultsView(){
 }
 
 
+
 /***************** Changing Data *******************/
 
 function restartQuiz() {
@@ -139,6 +143,7 @@ function restartQuiz() {
 
 function evaluateAnswer() {
     // checks if the selected answer (from radio button) is correct Answer
+    // and updates store.score
 }
 
 function updateQuestionNumber() {
@@ -147,6 +152,10 @@ function updateQuestionNumber() {
 }
 
 /******************* Handle Button Press (Event Listeners) ********************/
+// Reactful Pattern: Event Listeners will always
+// 1. (optional) Get info from DOM related user action
+// 2. Change the store
+// 3. Render
 
 function handleStartQuizClick() {
     // Handles click of the "Start Quiz" button on Intro View
