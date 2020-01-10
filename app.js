@@ -70,11 +70,83 @@ const store = {
    * You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
    *
    */
- 
+
 // We might want to use a factory function (or classes) and closure to create
 // instances of the "The Question Page" since it will be very simliar, but with 
 // different data inside
 
+
+// USER STORIES
+// The starter page should have a button to start the quiz => renderQuiz() and introView()
+// Users will get prompted through 5 multiple choice questions they can answer => questionView()
+//      -Users should be asked one question at a time
+//      -Users should be asked one question after another (Question View -> Results View -> new Question View) => changeView()
+// Users should be able to see what question they are on (update store.questionNumber)
+// Upon submitting answers, users should:
+//      -receive text feedback about their answer, if incorrect then tell them the right answer
+//      -press a button to move onto the next question
+// Users should be able to see their overall score at the end of the quiz (store.score) -> resultsView()
+// Users should be able to start a new quiz at the end -> restartQuiz()
+
+
+function renderQuiz() {
+    // this function is responsible for rendering the Quiz in the DOM
+    console.log('`renderQuiz` ran');
+}
+
+function introView() {
+    // this function handles the loading of introView page
+}
+
+function questionView(){
+    // We may need a factory function or class to change data as question changes
+}
+
+function feedbackRightView(){
+    // this function handles the loading of feedbackRightView() page
+}
+
+function feedbackWrongView(){
+     // this function handles the loading of feedbackWrongView() page
+}
+
+function resultsView(){
+     // this function handles the loading of resultsView() page
+}
+
+function restartQuiz() {
+     // when the "New Game" button is pressed, start the quiz over at the beginning
+     // ie load introView() and reset any data about the score and question number
+}
+
+function evaluateAnswer() {
+
+}
+
+function changeView() {
+    // this  function will handle the views changing when buttons are pressed
+    // ie introView -> "Start Quiz" -> QuestionView1 -> "Submit Answer" -> 
+    // feedbackRightView OR feedbackWrongView -> "Next Question" -> QuestionView2 ->
+    // {...} -> resultsView -> "New Game" -> introView
+    // it should run evaluateAnswer() to determine whether to load feedbackRightView() or
+    // feedbackWrongView()
+}
+
+function updateQuestionNumber() {
+    // this function will change the value of store.questionNumber after
+    // "Submit Answer" is pressed
+}
+// this function will be our callback when the page loads. it's responsible for
+// initially rendering the quiz, and activating our individual functions
+function main() {
+    renderQuiz();
+    // handleNewItemSubmit();
+    // handleItemCheckClicked();
+    // handleDeleteItemClicked();
+  }
+  
+// when the page loads, call `main`
+  $(main);
 
 // Wireframe for "Intro" View
 // =========================================================================
@@ -138,7 +210,7 @@ const store = {
 
 // The wireframe for the "Incorrect" feeback View
 // =========================================================================
-{/* <div class="container">
+/* <div class="container">
 <h2>Incorrect!</h2>
 
 <h3>The right answer was: </h3>
@@ -153,7 +225,7 @@ const store = {
     <!--We might want to change the text to "finish quiz" on the last question-->
     <button type="submit">Next Question<button>
 </form>
-</div> */}
+</div> */
 
 // The wireframe for the Results View
 // =========================================================================
