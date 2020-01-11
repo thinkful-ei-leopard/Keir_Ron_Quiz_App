@@ -176,19 +176,19 @@ function questionView(){
             <label for="answer-1">${answersArray.answers[0]}</label>
         </div>
         <div>
-            <input type="radio" id="answer-2" value=""name="monster" tabindex="1" required>
+            <input type="radio" id="answer-2" value="${answersArray.answers[1]}" name="monster" tabindex="1" required>
             <label for="answer-2">${answersArray.answers[1]}</label>
         </div>
         <div>
-            <input type="radio" id="answer-3" value=""name="monster" tabindex="1" required>
+            <input type="radio" id="answer-3" value="${answersArray.answers[2]}"name="monster" tabindex="1" required>
             <label for="answer-3">${answersArray.answers[2]}</label>
         </div>
         <div>
-            <input type="radio" id="answer-4" value=""name="monster" tabindex="1" required>
+            <input type="radio" id="answer-4" value="${answersArray.answers[3]}"name="monster" tabindex="1" required>
             <label for="answer-4">${answersArray.answers[3]}</label>
         </div>
     
-        <button type="submit">Submit</button>
+        <button type="submit" id="submit-quiz-button">Submit</button>
     </fieldset>
     <img src="${STORE.images[0].imageSrc}" alt="${STORE.images[0].imageAlt}">
     </form>
@@ -248,6 +248,9 @@ function handleSubmitClick(){
   // Handles click of the "Submit" button on the Question View
   // it should run evaluateAnswer() to determine whether to load feedbackRightView() or
   // feedbackWrongView()
+  $('body').on('click', '#submit-quiz-button', event => {
+    event.preventDefault();
+    console.log('handleSubmitClick works');
 }
 function handleNextQuestionClick() {
   // Handles click of "Next Question" button on feedbackRightView or feedbackWrongView
