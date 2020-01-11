@@ -251,7 +251,9 @@ function handleSubmitClick(){
   $('body').on('click', '#submit-quiz-button', event => {
     event.preventDefault();
     console.log('handleSubmitClick works');
+  });
 }
+
 function handleNextQuestionClick() {
   // Handles click of "Next Question" button on feedbackRightView or feedbackWrongView
   // it should run updateQuestionNumber() load the next QuestionView()
