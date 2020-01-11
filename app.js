@@ -127,7 +127,7 @@ function renderQuiz() {
   // {...} -> resultsView -> "New Game" -> introView
   // it should run evaluateAnswer() to determine whether to load feedbackRightView() or
   // feedbackWrongView()
-
+ 
   console.log('`renderQuiz` ran');
   // if the quiz hasnt started, 
   if(STORE.quizStarted === false) {
@@ -135,8 +135,8 @@ function renderQuiz() {
     return;
   }
   else if(STORE.questionNumber < STORE.questions.length && STORE.questionNumber >= 0) {
-    console.log('render part 2 works');
-    $('main').html(questionView());
+        console.log('render part 2 works');
+        $('main').html(questionView());
   }
 }
 
@@ -167,19 +167,19 @@ function questionView(){
         <div>
             <!-- tabindex="1" lets you use tab to move through Radio buttons
                  and "required" makes it so an answer is required-->
-            <input type="radio" id="answer-1" value="${answersArray.answers[0]}" name="monster" tabindex="1" required>
+            <input type="radio" id="answer-1" value="${answersArray.answers[0]}" name="dnd" tabindex="1" required>
             <label for="answer-1">${answersArray.answers[0]}</label>
         </div>
         <div>
-            <input type="radio" id="answer-2" value="${answersArray.answers[1]}" name="monster" tabindex="1" required>
+            <input type="radio" id="answer-2" value="${answersArray.answers[1]}" name="dnd" tabindex="1" required>
             <label for="answer-2">${answersArray.answers[1]}</label>
         </div>
         <div>
-            <input type="radio" id="answer-3" value="${answersArray.answers[2]}"name="monster" tabindex="1" required>
+            <input type="radio" id="answer-3" value="${answersArray.answers[2]}"name="dnd" tabindex="1" required>
             <label for="answer-3">${answersArray.answers[2]}</label>
         </div>
         <div>
-            <input type="radio" id="answer-4" value="${answersArray.answers[3]}"name="monster" tabindex="1" required>
+            <input type="radio" id="answer-4" value="${answersArray.answers[3]}"name="dnd" tabindex="1" required>
             <label for="answer-4">${answersArray.answers[3]}</label>
         </div>
     
@@ -217,15 +217,11 @@ function evaluateAnswer() {
   // checks if the selected answer (from radio button) is correct Answer
   // and updates store.score
   console.log('evaluate answer is working');
-  const answer = "figure it out";
+  let answer = $('input[name=dnd]:checked').val();
+  console.log(answer);
   if (answer === STORE.questions[STORE.questionNumber].correctAnswer) {
-
+    STORE.score++;
   }
-}
-
-function updateQuestionNumber() {
-  // this function will change the value of store.questionNumber after
-  // "Submit Answer" is pressed
 }
 
 /******************* Handle Button Press (Event Listeners) ********************/
@@ -252,6 +248,8 @@ function handleSubmitClick(){
     event.preventDefault();
     console.log('handleSubmitClick works');
     evaluateAnswer();
+    // Change some data in store that will affect the RENDER logic to 
+    // decide which view to go to next
     STORE.questionNumber++;
     renderQuiz();
   });
