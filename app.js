@@ -248,7 +248,7 @@ function resultsView(){
       <p>Wrong: ${STORE.questionNumber - STORE.score}</p>
     </section>
     <form>
-      <button class="buttonStyle" type="submit" id="new-game-button">Retake Quiz<button>
+      <button class="buttonStyle" type="submit" id="new-game-button">Retake Quiz</button>
     </form>
     </div>`;
 }
