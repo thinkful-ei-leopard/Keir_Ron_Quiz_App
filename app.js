@@ -59,13 +59,29 @@ const STORE = {
   score: 0,
   images: [
     {
-        imageSrc: '/images/alignment.jpg',
-        imageAlt: 'TEMP DESCRIPTION',
+      imageSrc: '/images/alignment.jpg',
+      imageAlt: 'TEMP DESCRIPTION',
     },
-      {
-          imageSrc: '/images/dice.jpg',
-          imageAlt: 'numerous dice',
-      },
+    {
+      imageSrc: '/images/dice.jpg',
+      imageAlt: 'numerous dice',
+    },
+    {
+      imageSrc: '/images/dice.jpg',
+      imageAlt: 'numerous dice',
+    },
+    {
+      imageSrc: '/images/dice.jpg',
+      imageAlt: 'numerous dice',
+    },
+    {
+      imageSrc: '/images/dice.jpg',
+      imageAlt: 'numerous dice',
+    },
+    {
+      imageSrc: '/images/dice.jpg',
+      imageAlt: 'numerous dice',
+    },
 
   ]
 };
@@ -99,43 +115,43 @@ const STORE = {
 // Users should be able to see their overall score at the end of the quiz (store.score) -> resultsView()
 // Users should be able to start a new quiz at the end -> restartQuiz()
 
-    //  EVERY TIME YOU CHANGE THE STORE, RUN THE RENDER FUNCTION!
+//  EVERY TIME YOU CHANGE THE STORE, RUN THE RENDER FUNCTION!
 
 
 /*********** Render  **************/
 function renderQuiz() {
-    // this function is responsible for rendering the Quiz in the DOM
-    // Tries to render multiple different templates to the page depending
-    // on which View should be shown
-    // The logic for which page should load goes into renderQuiz
-    // whenever store data is changed, run renderQuiz() to continue with logic
+  // this function is responsible for rendering the Quiz in the DOM
+  // Tries to render multiple different templates to the page depending
+  // on which View should be shown
+  // The logic for which page should load goes into renderQuiz
+  // whenever store data is changed, run renderQuiz() to continue with logic
     
-    // General FLOW 
-    // ie introView -> "Start Quiz" -> QuestionView1 -> "Submit Answer" -> 
-    // feedbackRightView OR feedbackWrongView -> "Next Question" -> QuestionView2 ->
-    // {...} -> resultsView -> "New Game" -> introView
-    // it should run evaluateAnswer() to determine whether to load feedbackRightView() or
-    // feedbackWrongView()
+  // General FLOW 
+  // ie introView -> "Start Quiz" -> QuestionView1 -> "Submit Answer" -> 
+  // feedbackRightView OR feedbackWrongView -> "Next Question" -> QuestionView2 ->
+  // {...} -> resultsView -> "New Game" -> introView
+  // it should run evaluateAnswer() to determine whether to load feedbackRightView() or
+  // feedbackWrongView()
 
-    console.log('`renderQuiz` ran');
-    // if the quiz hasnt started, 
-    if(STORE.quizStarted === false) {
-        $('main').html(introView());
-        return;
-    }
-    else if(STORE.questionNumber < STORE.questions.length && STORE.questionNumber >= 0) {
-        console.log('render part 2 works');
-        $('main').html(questionView());
-    }
+  console.log('`renderQuiz` ran');
+  // if the quiz hasnt started, 
+  if(STORE.quizStarted === false) {
+    $('main').html(introView());
+    return;
+  }
+  else if(STORE.questionNumber < STORE.questions.length && STORE.questionNumber >= 0) {
+    console.log('render part 2 works');
+    $('main').html(questionView());
+  }
 }
 
 
 /**************** View HTML Templates  ***************/
 
 function introView() {
-    // this function handles the loading of introView page
-    console.log('introView working');
-    return `
+  // this function handles the loading of introView page
+  console.log('introView working');
+  return `
         <div class="container">
         <form>
             <button type="submit" id="start-quiz-button">Start Quiz</button>
@@ -145,29 +161,31 @@ function introView() {
 }
 
 function questionView(){
-    // We may need a factory function or class to change data as question changes
-    console.log('question view works');
-    return `<div class="container">
+  // We may need a factory function or class to change data as question changes
+  console.log('question view works');
+  let answersArray = STORE.questions[STORE.questionNumber];
+  console.log(answersArray);
+  return `<div class="container">
     <form>
     <fieldset>
-        <legend>${STORE.questions[STORE.questionNumber].question}</legend>
+        <legend>${answersArray.question}</legend>
         <div>
             <!-- tabindex="1" lets you use tab to move through Radio buttons
                  and "required" makes it so an answer is required-->
-            <input type="radio" id="answer-1" name="monster" tabindex="1" required>
-            <label for="answer-1">${STORE.questions[STORE.questionNumber].answers[0]}</label>
+            <input type="radio" id="answer-1" value="${answersArray.answers[0]}" name="monster" tabindex="1" required>
+            <label for="answer-1">${answersArray.answers[0]}</label>
         </div>
         <div>
-            <input type="radio" id="answer-2" name="monster" tabindex="1" required>
-            <label for="answer-2">${STORE.questions[STORE.questionNumber].answers[1]}</label>
+            <input type="radio" id="answer-2" value=""name="monster" tabindex="1" required>
+            <label for="answer-2">${answersArray.answers[1]}</label>
         </div>
         <div>
-            <input type="radio" id="answer-3" name="monster" tabindex="1" required>
-            <label for="answer-3">${STORE.questions[STORE.questionNumber].answers[2]}</label>
+            <input type="radio" id="answer-3" value=""name="monster" tabindex="1" required>
+            <label for="answer-3">${answersArray.answers[2]}</label>
         </div>
         <div>
-            <input type="radio" id="answer-4" name="monster" tabindex="1" required>
-            <label for="answer-4">${STORE.questions[STORE.questionNumber].answers[3]}</label>
+            <input type="radio" id="answer-4" value=""name="monster" tabindex="1" required>
+            <label for="answer-4">${answersArray.answers[3]}</label>
         </div>
     
         <button type="submit">Submit</button>
@@ -180,15 +198,15 @@ function questionView(){
 }
 
 function feedbackRightView(){
-    // this function handles the loading of feedbackRightView() page
+  // this function handles the loading of feedbackRightView() page
 }
 
 function feedbackWrongView(){
-     // this function handles the loading of feedbackWrongView() page
+  // this function handles the loading of feedbackWrongView() page
 }
 
 function resultsView(){
-     // this function handles the loading of resultsView() page
+  // this function handles the loading of resultsView() page
 }
 
 
@@ -196,18 +214,18 @@ function resultsView(){
 /***************** Changing Data *******************/
 
 function restartQuiz() {
-     // when the "New Game" button is pressed, start the quiz over at the beginning
-     // ie load introView() and reset any data about the score and question number
+  // when the "New Game" button is pressed, start the quiz over at the beginning
+  // ie load introView() and reset any data about the score and question number
 }
 
 function evaluateAnswer() {
-    // checks if the selected answer (from radio button) is correct Answer
-    // and updates store.score
+  // checks if the selected answer (from radio button) is correct Answer
+  // and updates store.score
 }
 
 function updateQuestionNumber() {
-    // this function will change the value of store.questionNumber after
-    // "Submit Answer" is pressed
+  // this function will change the value of store.questionNumber after
+  // "Submit Answer" is pressed
 }
 
 /******************* Handle Button Press (Event Listeners) ********************/
@@ -217,41 +235,41 @@ function updateQuestionNumber() {
 // 3. Render
 
 function handleStartQuizClick() {
-    // Handles click of the "Start Quiz" button on Intro View
-    // It should load the FIRST QuestionView()
-    $('body').on('click', '#start-quiz-button', event => {
-        event.preventDefault();
-        console.log('start button works');
-        STORE.quizStarted = true;
-        renderQuiz();
-    });
+  // Handles click of the "Start Quiz" button on Intro View
+  // It should load the FIRST QuestionView()
+  $('body').on('click', '#start-quiz-button', event => {
+    event.preventDefault();
+    console.log('start button works');
+    STORE.quizStarted = true;
+    renderQuiz();
+  });
 }
 function handleSubmitClick(){
-    // Handles click of the "Submit" button on the Question View
-    // it should run evaluateAnswer() to determine whether to load feedbackRightView() or
-    // feedbackWrongView()
+  // Handles click of the "Submit" button on the Question View
+  // it should run evaluateAnswer() to determine whether to load feedbackRightView() or
+  // feedbackWrongView()
 }
 function handleNextQuestionClick() {
-    // Handles click of "Next Question" button on feedbackRightView or feedbackWrongView
-    // it should run updateQuestionNumber() load the next QuestionView()
+  // Handles click of "Next Question" button on feedbackRightView or feedbackWrongView
+  // it should run updateQuestionNumber() load the next QuestionView()
 }
 function handleNewGameClick() {
-    // Handles click of "New Game" on the Results View
+  // Handles click of "New Game" on the Results View
 }
 
 
 // this function will be our callback when the page loads. it's responsible for
 // initially rendering the quiz, and activating our individual functions
 function handleQuiz() {
-    renderQuiz();
-    handleStartQuizClick();
-    handleSubmitClick();
-    handleNextQuestionClick();
-    handleNewGameClick();
-  }
+  renderQuiz();
+  handleStartQuizClick();
+  handleSubmitClick();
+  handleNextQuestionClick();
+  handleNewGameClick();
+}
   
 // when the page loads, call `handleQuiz`
-  $(handleQuiz);
+$(handleQuiz);
 
 // Wireframe for "Intro" View
 // =========================================================================
