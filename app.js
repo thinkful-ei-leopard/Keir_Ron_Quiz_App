@@ -176,25 +176,25 @@ function questionView(){
   let answersArray = STORE.questions[STORE.questionNumber];
   console.log(answersArray);
   return `<div class="container">
-    <form>
+    <form id="main-form">
     <fieldset>
         <legend>${answersArray.question}</legend>
         <div>
             <!-- tabindex="1" lets you use tab to move through Radio buttons
                  and "required" makes it so an answer is required-->
-            <input type="radio" id="answer-1" value="${answersArray.answers[0]}" name="dnd" tabindex="1" required>
+            <input type="radio" id="answer-1" value="${answersArray.answers[0]}" name="dnd" tabindex="1" required />
             <label for="answer-1">${answersArray.answers[0]}</label>
         </div>
         <div>
-            <input type="radio" id="answer-2" value="${answersArray.answers[1]}" name="dnd" tabindex="1" required>
+            <input type="radio" id="answer-2" value="${answersArray.answers[1]}" name="dnd" tabindex="1" required />
             <label for="answer-2">${answersArray.answers[1]}</label>
         </div>
         <div>
-            <input type="radio" id="answer-3" value="${answersArray.answers[2]}"name="dnd" tabindex="1" required>
+            <input type="radio" id="answer-3" value="${answersArray.answers[2]}"name="dnd" tabindex="1" required />
             <label for="answer-3">${answersArray.answers[2]}</label>
         </div>
         <div>
-            <input type="radio" id="answer-4" value="${answersArray.answers[3]}"name="dnd" tabindex="1" required>
+            <input type="radio" id="answer-4" value="${answersArray.answers[3]}"name="dnd" tabindex="1" required />
             <label for="answer-4">${answersArray.answers[3]}</label>
         </div>
     
@@ -314,7 +314,9 @@ function handleSubmitClick(){
   // Handles click of the "Submit" button on the Question View
   // it should run evaluateAnswer() to determine whether to load feedbackRightView() or
   // feedbackWrongView()
-  $('body').on('click', '#submit-quiz-button', event => {
+  // try $('body').on('submit', '#main-form', event )
+  // instead of $('body).on('click', '#submit-quiz-button', event)
+  $('body').on('submit', '#main-form', event => {
     event.preventDefault();
     console.log('handleSubmitClick works');
     evaluateAnswer();
