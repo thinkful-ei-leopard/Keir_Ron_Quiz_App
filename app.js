@@ -62,23 +62,23 @@ const STORE = {
   images: [
     {
       imageSrc: '/images/alignment.jpg',
-      imageAlt: 'TEMP DESCRIPTION',
+      imageAlt: 'Good and evil fantasy characters fighting',
     },
     {
       imageSrc: '/images/skills.jpg',
-      imageAlt: 'numerous dice',
+      imageAlt: 'A locked treasure chest',
     },
     {
       imageSrc: '/images/races.jpg',
-      imageAlt: 'numerous dice',
+      imageAlt: 'A group of fantasy characters stand in a circle',
     },
     {
       imageSrc: '/images/dice.jpg',
-      imageAlt: 'numerous dice',
+      imageAlt: 'Numerous magical dice sit on a table',
     },
     {
       imageSrc: '/images/wisdom.jpg',
-      imageAlt: 'numerous dice',
+      imageAlt: 'A gnome wizard casts a spell',
     },
   ]
 };
@@ -221,7 +221,6 @@ function feedbackRightView(){
   </section>
   
   <form>
-      <!--We might want to change the text to "finish quiz" on the last question-->
       <button type="submit" id="next-question-button">Next Question<button>
   </form>
   </div>`;
