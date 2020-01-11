@@ -134,7 +134,7 @@ function renderQuiz() {
   // if the quiz hasnt started, load the introView
   if(STORE.quizStarted === false) {
     $('main').html(introView());
-    return;
+    //return;
   }
   else if(STORE.questionNumber < STORE.questions.length && STORE.questionNumber >= 0) {
     if(STORE.questionAnswered === false) {
@@ -149,7 +149,9 @@ function renderQuiz() {
       console.log('right view is about to load');
       $('main').html(feedbackRightView());
     }
-
+  }
+  else {
+    $('main').html(resultsView());
   }
 }
 
@@ -247,6 +249,19 @@ function feedbackWrongView(){
 
 function resultsView(){
   // this function handles the loading of resultsView() page
+  return `    
+  <div class="container">
+    <h2>End of Game</h2>
+    <section>
+      <p>Final Score ${STORE.score / STORE.questions.length * 100} %</p>
+      <p>Right: ${STORE.score}</p>
+      <p>Wrong: ${STORE.questionNumber - STORE.score}</p>
+    </section>
+    <form>
+      <!--We might want to change the text to "finish quiz" on the last question-->
+      <button type="submit" id="new-game-button">Retake Quiz<button>
+    </form>
+    </div>`;
 }
 
 
@@ -255,7 +270,13 @@ function resultsView(){
 
 function restartQuiz() {
   // when the "New Game" button is pressed, start the quiz over at the beginning
-  // ie load introView() and reset any data about the score and question number
+  // it resets all data in STORE back to the default value which causes the 
+  // renderQuiz() logic to start over
+  STORE.quizStarted = false;
+  STORE.questionNumber = 0; 
+  STORE.score = 0;
+  STORE.questionAnswered = false;
+  STORE.answeredCorrectly = false;
 }
 
 function evaluateAnswer() {
@@ -315,6 +336,11 @@ function handleNextQuestionClick() {
 }
 function handleNewGameClick() {
   // Handles click of "New Game" on the Results View
+  $('body').on('click', '#new-game-button', event => {
+    event.preventDefault();
+    restartQuiz();
+    renderQuiz();
+  });
 }
 
 
