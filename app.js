@@ -63,7 +63,11 @@ const STORE = {
       imageAlt: 'TEMP DESCRIPTION',
     },
     {
-      imageSrc: '/images/dice.jpg',
+      imageSrc: '/images/skills.jpg',
+      imageAlt: 'numerous dice',
+    },
+    {
+      imageSrc: '/images/races.jpg',
       imageAlt: 'numerous dice',
     },
     {
@@ -71,18 +75,9 @@ const STORE = {
       imageAlt: 'numerous dice',
     },
     {
-      imageSrc: '/images/dice.jpg',
+      imageSrc: '/images/wisdom.jpg',
       imageAlt: 'numerous dice',
     },
-    {
-      imageSrc: '/images/dice.jpg',
-      imageAlt: 'numerous dice',
-    },
-    {
-      imageSrc: '/images/dice.jpg',
-      imageAlt: 'numerous dice',
-    },
-
   ]
 };
   
@@ -190,7 +185,7 @@ function questionView(){
     
         <button type="submit" id="submit-quiz-button">Submit</button>
     </fieldset>
-    <img src="${STORE.images[0].imageSrc}" alt="${STORE.images[0].imageAlt}">
+    <img src="${STORE.images[STORE.questionNumber].imageSrc}" alt="${STORE.images[STORE.questionNumber].imageAlt}">
     </form>
     <!-- This is keeping track of the current question (i.e. Question 2 of 5-->
     <h2>Question ${STORE.questionNumber+1} of ${STORE.questions.length}</h2>
@@ -221,6 +216,11 @@ function restartQuiz() {
 function evaluateAnswer() {
   // checks if the selected answer (from radio button) is correct Answer
   // and updates store.score
+  console.log('evaluate answer is working');
+  const answer = "figure it out";
+  if (answer === STORE.questions[STORE.questionNumber].correctAnswer) {
+
+  }
 }
 
 function updateQuestionNumber() {
@@ -251,6 +251,9 @@ function handleSubmitClick(){
   $('body').on('click', '#submit-quiz-button', event => {
     event.preventDefault();
     console.log('handleSubmitClick works');
+    evaluateAnswer();
+    STORE.questionNumber++;
+    renderQuiz();
   });
 }
 
