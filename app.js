@@ -11,7 +11,7 @@ const STORE = {
         'Lawful evil',
         'Radical'
       ],
-      correctAnswer: 'Radical'
+      correctAnswer: 'Radical',
     },
     {
       question: 'Which class gets the most out of Skills?',
@@ -56,7 +56,18 @@ const STORE = {
   ],
   quizStarted: false,
   questionNumber: 0,
-  score: 0
+  score: 0,
+  images: [
+    {
+        imageSrc: '/images/alignment.jpg',
+        imageAlt: 'TEMP DESCRIPTION',
+    },
+      {
+          imageSrc: '/images/dice.jpg',
+          imageAlt: 'numerous dice',
+      },
+
+  ]
 };
   
 /**
@@ -161,9 +172,9 @@ function questionView(){
     
         <button type="submit">Submit</button>
     </fieldset>
-    <img src="/images/dice.jpg" alt="numerous dice">
+    <img src="${STORE.images[0].imageSrc}" alt="${STORE.images[0].imageAlt}">
     </form>
-    
+    <!-- This is keeping track of the current question (i.e. Question 2 of 5-->
     <h2>Question ${STORE.questionNumber+1} of ${STORE.questions.length}</h2>
     </div>`;
 }
