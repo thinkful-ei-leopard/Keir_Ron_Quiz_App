@@ -131,24 +131,24 @@ function renderQuiz() {
   // feedbackWrongView()
  
   console.log('`renderQuiz` ran');
-  // if the quiz hasnt started, 
+  // if the quiz hasnt started, load the introView
   if(STORE.quizStarted === false) {
     $('main').html(introView());
     return;
   }
   else if(STORE.questionNumber < STORE.questions.length && STORE.questionNumber >= 0) {
-      if(STORE.questionAnswered === false) {
-        console.log('render part 2 works');
-        $('main').html(questionView());
-      }
-      else if(STORE.questionAnswered === true && STORE.answeredCorrectly === false) {
-          console.log('wrong view is about to load');
-          $('main').html(feedbackWrongView());
-      }
-      else if(STORE.questionAnswered === true && STORE.answeredCorrectly === true) {
-          console.log('right view is about to load');
-          $('main').html(feedbackRightView());
-      }
+    if(STORE.questionAnswered === false) {
+      console.log('render part 2 works');
+      $('main').html(questionView());
+    }
+    else if(STORE.questionAnswered === true && STORE.answeredCorrectly === false) {
+      console.log('wrong view is about to load');
+      $('main').html(feedbackWrongView());
+    }
+    else if(STORE.questionAnswered === true && STORE.answeredCorrectly === true) {
+      console.log('right view is about to load');
+      $('main').html(feedbackRightView());
+    }
 
   }
 }
@@ -210,17 +210,17 @@ function feedbackRightView(){
   return `<div class="container">
   <h2>Correct!</h2>
   
-  <img src="/images/correct.svg" alt="PUTTTTTTTTTTTTTTTTTTTT SOMETHING HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE">
+  <img src="/images/correct.svg" alt="celebration confetti">
   
   <section>
       <p>Current Score</p>
-      <p>Right: 2</p>
-      <p>Wrong: 1</p>
+      <p>Right: ${STORE.score}</p>
+      <p>Wrong: ${STORE.questionNumber - STORE.score}</p>
   </section>
   
   <form>
       <!--We might want to change the text to "finish quiz" on the last question-->
-      <button type="submit">Next Question<button>
+      <button type="submit" id="next-question-button">Next Question<button>
   </form>
   </div>`;
 }
@@ -230,17 +230,17 @@ function feedbackWrongView(){
   return `<div class="container">
   <h2>Incorrect!</h2>
   
-  <h3>The right answer was: </h3>
+  <h3>The right answer was: ${STORE.questions[STORE.questionNumber].correctAnswer}</h3>
   
   <section>
       <p>Current Score</p>
-      <p>Right: 2</p>
-      <p>Wrong: 1</p>
+      <p>Right: ${STORE.score}</p>
+      <p>Wrong: ${STORE.questionNumber - STORE.score}</p>
   </section>
   
   <form>
       <!--We might want to change the text to "finish quiz" on the last question-->
-      <button type="submit">Next Question<button>
+      <button type="submit" id="next-question-button">Next Question<button>
   </form>
   </div> `;
 }
@@ -297,8 +297,6 @@ function handleSubmitClick(){
     event.preventDefault();
     console.log('handleSubmitClick works');
     evaluateAnswer();
-    // Change some data in store that will affect the RENDER logic to 
-    // decide which view to go to next
     STORE.questionNumber++;
     STORE.questionAnswered = true; // When false questionView() loads after render, when false a feedbackView() loads after render
     renderQuiz();
@@ -307,10 +305,13 @@ function handleSubmitClick(){
 
 function handleNextQuestionClick() {
   // Handles click of "Next Question" button on feedbackRightView or feedbackWrongView
-  // it should run updateQuestionNumber() load the next QuestionView()
-  // should set STORE.questionAnswered back to false
-  STORE.questionAnswered = false;
-  renderQuiz();
+  // should set STORE.questionAnswered back to false so render returns back to QuestionView
+  $('body').on('click', '#next-question-button', event => {
+    event.preventDefault();
+    STORE.questionAnswered = false;
+    renderQuiz();
+  });
+
 }
 function handleNewGameClick() {
   // Handles click of "New Game" on the Results View
