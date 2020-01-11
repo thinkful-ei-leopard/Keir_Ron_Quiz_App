@@ -310,12 +310,11 @@ function handleStartQuizClick() {
     renderQuiz();
   });
 }
+
 function handleSubmitClick(){
   // Handles click of the "Submit" button on the Question View
-  // it should run evaluateAnswer() to determine whether to load feedbackRightView() or
-  // feedbackWrongView()
-  // try $('body').on('submit', '#main-form', event )
-  // instead of $('body).on('click', '#submit-quiz-button', event)
+  // it should run evaluateAnswer() to determine whether to load 
+  // feedbackRightView() or feedbackWrongView()
   $('body').on('submit', '#main-form', event => {
     event.preventDefault();
     console.log('handleSubmitClick works');
@@ -336,6 +335,7 @@ function handleNextQuestionClick() {
   });
 
 }
+
 function handleNewGameClick() {
   // Handles click of "New Game" on the Results View
   $('body').on('click', '#new-game-button', event => {
@@ -344,7 +344,6 @@ function handleNewGameClick() {
     renderQuiz();
   });
 }
-
 
 // this function will be our callback when the page loads. it's responsible for
 // initially rendering the quiz, and activating our individual functions
@@ -358,99 +357,3 @@ function handleQuiz() {
   
 // when the page loads, call `handleQuiz`
 $(handleQuiz);
-
-// Wireframe for "Intro" View
-// =========================================================================
-// <div class="container">
-// <form>
-//     <button type="submit">Start Quiz</button>
-// </form>
-// </div>
-
-
-// The wireframe for the "Question" View
-// =========================================================================
-// <div class="container">
-// <form>
-// <fieldset>
-//     <legend>Which of these dice are used for an Initiative roll?</legend>
-//     <div>
-//         <!-- tabindex="1" lets you use tab to move through Radio buttons
-//             and "required" makes it so an answer is required-->
-//         <input type="radio" id="kraken" name="monster" tabindex="1" required>
-//         <label for="kraken">D4</label>
-//     </div>
-//     <div>
-//         <input type="radio" id="sasquatch" name="monster" tabindex="1" required>
-//         <label for="sasquatch">D8</label>
-//     </div>
-//     <div>
-//         <input type="radio" id="mothman" name="monster" tabindex="1" required>
-//         <label for="mothman">D10</label>
-//     </div>
-//     <div>
-//         <input type="radio" id="dragon" name="monster" tabindex="1" required>
-//         <label for="dragon">D20</label>
-//     </div>
-
-//     <button type="submit">Submit</button>
-// </fieldset>
-// <img src="/images/dice.jpg" alt="numerous dice">
-// </form>
-
-// <h2>Question 2 of 5</h2>
-// </div>
-
-// The wireframe for "Correct" feedback View
-// =========================================================================
-// <div class="container">
-// <h2>Correct!</h2>
-
-// <img src="/images/correct.svg" alt="">
-
-// <section>
-//     <p>Current Score</p>
-//     <p>Right: 2</p>
-//     <p>Wrong: 1</p>
-// </section>
-
-// <form>
-//     <!--We might want to change the text to "finish quiz" on the last question-->
-//     <button type="submit">Next Question<button>
-// </form>
-// </div>
-
-
-// The wireframe for the "Incorrect" feeback View
-// =========================================================================
-// <div class="container">
-// <h2>Incorrect!</h2>
-
-// <h3>The right answer was: </h3>
-
-// <section>
-//     <p>Current Score</p>
-//     <p>Right: 2</p>
-//     <p>Wrong: 1</p>
-// </section>
-
-// <form>
-//     <!--We might want to change the text to "finish quiz" on the last question-->
-//     <button type="submit">Next Question<button>
-// </form>
-// </div> 
-
-// The wireframe for the Results View
-// =========================================================================
-// <div class="container">
-// <h2>End of Game</h2>
-// <section>
-//     <p>Final Score</p>
-//     <p>Right: 2</p>
-//     <p>Wrong: 1</p>
-// </section>
-// <form>
-//     <!--We might want to change the text to "finish quiz" on the last question-->
-//     <button type="submit">New Game<button>
-// </form>
-// </div>
