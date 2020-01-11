@@ -57,6 +57,8 @@ const STORE = {
   quizStarted: false,
   questionNumber: 0,
   score: 0,
+  questionAnswered: false,
+  answeredCorrectly: false,
   images: [
     {
       imageSrc: '/images/alignment.jpg',
@@ -135,8 +137,19 @@ function renderQuiz() {
     return;
   }
   else if(STORE.questionNumber < STORE.questions.length && STORE.questionNumber >= 0) {
+      if(STORE.questionAnswered === false) {
         console.log('render part 2 works');
         $('main').html(questionView());
+      }
+      else if(STORE.questionAnswered === true && STORE.answeredCorrectly === false) {
+          console.log('wrong view is about to load');
+          $('main').html(feedbackWrongView());
+      }
+      else if(STORE.questionAnswered === true && STORE.answeredCorrectly === true) {
+          console.log('right view is about to load');
+          $('main').html(feedbackRightView());
+      }
+
   }
 }
 
@@ -194,10 +207,42 @@ function questionView(){
 
 function feedbackRightView(){
   // this function handles the loading of feedbackRightView() page
+  return `<div class="container">
+  <h2>Correct!</h2>
+  
+  <img src="/images/correct.svg" alt="PUTTTTTTTTTTTTTTTTTTTT SOMETHING HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE">
+  
+  <section>
+      <p>Current Score</p>
+      <p>Right: 2</p>
+      <p>Wrong: 1</p>
+  </section>
+  
+  <form>
+      <!--We might want to change the text to "finish quiz" on the last question-->
+      <button type="submit">Next Question<button>
+  </form>
+  </div>`;
 }
 
 function feedbackWrongView(){
   // this function handles the loading of feedbackWrongView() page
+  return `<div class="container">
+  <h2>Incorrect!</h2>
+  
+  <h3>The right answer was: </h3>
+  
+  <section>
+      <p>Current Score</p>
+      <p>Right: 2</p>
+      <p>Wrong: 1</p>
+  </section>
+  
+  <form>
+      <!--We might want to change the text to "finish quiz" on the last question-->
+      <button type="submit">Next Question<button>
+  </form>
+  </div> `;
 }
 
 function resultsView(){
@@ -215,12 +260,16 @@ function restartQuiz() {
 
 function evaluateAnswer() {
   // checks if the selected answer (from radio button) is correct Answer
-  // and updates store.score
+  // and updates STORE.score and will toggle the value of 
+  // STORE.evaluate answer from true to false
   console.log('evaluate answer is working');
   let answer = $('input[name=dnd]:checked').val();
   console.log(answer);
   if (answer === STORE.questions[STORE.questionNumber].correctAnswer) {
     STORE.score++;
+    STORE.answeredCorrectly = true; // makes feedbackRightView() load after renderQuiz()
+  } else {
+    STORE.answeredCorrectly = false; // makes feedbackWrongView() load after renderQuiz()
   }
 }
 
@@ -251,6 +300,7 @@ function handleSubmitClick(){
     // Change some data in store that will affect the RENDER logic to 
     // decide which view to go to next
     STORE.questionNumber++;
+    STORE.questionAnswered = true; // When false questionView() loads after render, when false a feedbackView() loads after render
     renderQuiz();
   });
 }
@@ -258,6 +308,9 @@ function handleSubmitClick(){
 function handleNextQuestionClick() {
   // Handles click of "Next Question" button on feedbackRightView or feedbackWrongView
   // it should run updateQuestionNumber() load the next QuestionView()
+  // should set STORE.questionAnswered back to false
+  STORE.questionAnswered = false;
+  renderQuiz();
 }
 function handleNewGameClick() {
   // Handles click of "New Game" on the Results View
@@ -341,22 +394,22 @@ $(handleQuiz);
 
 // The wireframe for the "Incorrect" feeback View
 // =========================================================================
-/* <div class="container">
-<h2>Incorrect!</h2>
+// <div class="container">
+// <h2>Incorrect!</h2>
 
-<h3>The right answer was: </h3>
+// <h3>The right answer was: </h3>
 
-<section>
-    <p>Current Score</p>
-    <p>Right: 2</p>
-    <p>Wrong: 1</p>
-</section>
+// <section>
+//     <p>Current Score</p>
+//     <p>Right: 2</p>
+//     <p>Wrong: 1</p>
+// </section>
 
-<form>
-    <!--We might want to change the text to "finish quiz" on the last question-->
-    <button type="submit">Next Question<button>
-</form>
-</div> */
+// <form>
+//     <!--We might want to change the text to "finish quiz" on the last question-->
+//     <button type="submit">Next Question<button>
+// </form>
+// </div> 
 
 // The wireframe for the Results View
 // =========================================================================
