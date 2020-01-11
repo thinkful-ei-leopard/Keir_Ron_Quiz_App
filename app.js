@@ -1,7 +1,7 @@
 'use strict';
 
 const STORE = {
-  // 5 or more questions are required
+
   questions: [
     {
       question: 'Which of these is not an alignment type?',
@@ -96,10 +96,6 @@ const STORE = {
    *
    */
 
-// We might want to use a factory function (or classes) and closure to create
-// instances of the "The Question Page" since it will be very simliar, but with 
-// different data inside
-
 // USER STORIES
 // The starter page should have a button to start the quiz => renderQuiz() and introView()
 // Users will get prompted through 5 multiple choice questions they can answer => questionView()
@@ -111,8 +107,13 @@ const STORE = {
 //      -press a button to move onto the next question
 // Users should be able to see their overall score at the end of the quiz (store.score) -> resultsView()
 // Users should be able to start a new quiz at the end -> restartQuiz()
-
-//  EVERY TIME YOU CHANGE THE STORE, RUN THE RENDER FUNCTION!
+    
+// General FLOW 
+// ie introView -> "Start Quiz" -> QuestionView1 -> "Submit Answer" -> 
+// feedbackRightView OR feedbackWrongView -> "Next Question" -> QuestionView2 ->
+// {...} -> resultsView -> "New Game" -> introView
+// it should run evaluateAnswer() to determine whether to load feedbackRightView() or
+// feedbackWrongView()
 
 
 /*********** Render  **************/
@@ -122,19 +123,11 @@ function renderQuiz() {
   // on which View should be shown
   // The logic for which page should load goes into renderQuiz
   // whenever store data is changed, run renderQuiz() to continue with logic
-    
-  // General FLOW 
-  // ie introView -> "Start Quiz" -> QuestionView1 -> "Submit Answer" -> 
-  // feedbackRightView OR feedbackWrongView -> "Next Question" -> QuestionView2 ->
-  // {...} -> resultsView -> "New Game" -> introView
-  // it should run evaluateAnswer() to determine whether to load feedbackRightView() or
-  // feedbackWrongView()
- 
+
   console.log('`renderQuiz` ran');
   // if the quiz hasnt started, load the introView
   if(STORE.quizStarted === false) {
     $('main').html(introView());
-    //return;
   }
   else if(STORE.questionNumber < STORE.questions.length && STORE.questionNumber >= 0) {
     if(STORE.questionAnswered === false) {
@@ -171,7 +164,7 @@ function introView() {
 }
 
 function questionView(){
-  // We may need a factory function or class to change data as question changes
+  // this function handles the loading of the questionView page
   console.log('question view works');
   let answersArray = STORE.questions[STORE.questionNumber];
   console.log(answersArray);
@@ -180,21 +173,20 @@ function questionView(){
     <fieldset>
         <legend>${answersArray.question}</legend>
         <div>
-            <!-- tabindex="1" lets you use tab to move through Radio buttons
-                 and "required" makes it so an answer is required-->
-            <input type="radio" id="answer-1" value="${answersArray.answers[0]}" name="dnd" tabindex="1" required />
+            <!-- Inputs with "required" makes it so an answer is required to submit-->
+            <input type="radio" id="answer-1" value="${answersArray.answers[0]}" name="dnd" tabindex="0" required />
             <label for="answer-1">${answersArray.answers[0]}</label>
         </div>
         <div>
-            <input type="radio" id="answer-2" value="${answersArray.answers[1]}" name="dnd" tabindex="1" required />
+            <input type="radio" id="answer-2" value="${answersArray.answers[1]}" name="dnd" tabindex="0" required />
             <label for="answer-2">${answersArray.answers[1]}</label>
         </div>
         <div>
-            <input type="radio" id="answer-3" value="${answersArray.answers[2]}"name="dnd" tabindex="1" required />
+            <input type="radio" id="answer-3" value="${answersArray.answers[2]}"name="dnd" tabindex="0" required />
             <label for="answer-3">${answersArray.answers[2]}</label>
         </div>
         <div>
-            <input type="radio" id="answer-4" value="${answersArray.answers[3]}"name="dnd" tabindex="1" required />
+            <input type="radio" id="answer-4" value="${answersArray.answers[3]}"name="dnd" tabindex="0" required />
             <label for="answer-4">${answersArray.answers[3]}</label>
         </div>
     
@@ -240,7 +232,6 @@ function feedbackWrongView(){
   </section>
   
   <form>
-      <!--We might want to change the text to "finish quiz" on the last question-->
       <button type="submit" id="next-question-button">Next Question<button>
   </form>
   </div> `;
@@ -257,12 +248,10 @@ function resultsView(){
       <p>Wrong: ${STORE.questionNumber - STORE.score}</p>
     </section>
     <form>
-      <!--We might want to change the text to "finish quiz" on the last question-->
       <button type="submit" id="new-game-button">Retake Quiz<button>
     </form>
     </div>`;
 }
-
 
 
 /***************** Changing Data *******************/
@@ -284,7 +273,6 @@ function evaluateAnswer() {
   // STORE.evaluate answer from true to false
   console.log('evaluate answer is working');
   let answer = $('input[name=dnd]:checked').val();
-  console.log(answer);
   if (answer === STORE.questions[STORE.questionNumber].correctAnswer) {
     STORE.score++;
     STORE.answeredCorrectly = true; // makes feedbackRightView() load after renderQuiz()
@@ -292,6 +280,7 @@ function evaluateAnswer() {
     STORE.answeredCorrectly = false; // makes feedbackWrongView() load after renderQuiz()
   }
 }
+
 
 /******************* Handle Button Press (Event Listeners) ********************/
 // Reactful Pattern: Event Listeners will always
@@ -345,7 +334,7 @@ function handleNewGameClick() {
 }
 
 // this function will be our callback when the page loads. it's responsible for
-// initially rendering the quiz, and activating our individual functions
+// initially rendering the quiz and setting up our event listeners
 function handleQuiz() {
   renderQuiz();
   handleStartQuizClick();
