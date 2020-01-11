@@ -202,7 +202,7 @@ function questionView(){
 function feedbackRightView(){
   // this function handles the loading of feedbackRightView() page
   return `<div class="container">
-  <h2>Correct!</h2>
+  <h2 class="correct">Correct!</h2>
   
   <img src="/images/correct.svg" alt="celebration confetti">
   
@@ -213,7 +213,7 @@ function feedbackRightView(){
   </section>
   
   <form>
-      <button class="buttonStyle" type="submit" id="next-question-button">Next Question<button>
+      <button class="buttonStyle" type="submit" id="next-question-button">Next Question</button>
   </form>
   </div>`;
 }
@@ -221,7 +221,7 @@ function feedbackRightView(){
 function feedbackWrongView(){
   // this function handles the loading of feedbackWrongView() page
   return `<div class="container">
-  <h2>Incorrect!</h2>
+  <h2 class="incorrect">Incorrect!</h2>
   
   <h3>The right answer was: ${STORE.questions[STORE.questionNumber].correctAnswer}</h3>
   
@@ -232,7 +232,7 @@ function feedbackWrongView(){
   </section>
   
   <form>
-      <button class="buttonStyle" type="submit" id="next-question-button">Next Question<button>
+      <button class="buttonStyle" type="submit" id="next-question-button">Next Question</button>
   </form>
   </div> `;
 }

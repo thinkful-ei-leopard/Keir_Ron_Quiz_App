@@ -36,10 +36,12 @@ button {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #283966;
 }
+
 .buttonStyle:hover {
 	background:linear-gradient(to bottom, #c46013 5%, #bd3311 100%);
 	background-color:#c46013;
 }
+
 .buttonStyle:active {
 	position:relative;
 	top:1px;
@@ -63,7 +65,13 @@ form {
 h1, h2 {
     text-align: center;
 }
+.correct {
+    color: green;
+}
 
+.incorrect {
+    color: red;
+}
 @media screen and (min-width: 500px) {
 
     form {
