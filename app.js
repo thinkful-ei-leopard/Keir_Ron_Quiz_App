@@ -61,23 +61,23 @@ const STORE = {
   answeredCorrectly: false,
   images: [
     {
-      imageSrc: 'images/alignment.jpg',
+      imageSrc: 'Images/alignment.jpg',
       imageAlt: 'Good and evil fantasy characters fighting',
     },
     {
-      imageSrc: 'images/skills.jpg',
+      imageSrc: 'Images/skills.jpg',
       imageAlt: 'A locked treasure chest',
     },
     {
-      imageSrc: 'images/races.jpg',
+      imageSrc: 'Images/races.jpg',
       imageAlt: 'A group of fantasy characters stand in a circle',
     },
     {
-      imageSrc: 'images/dice.jpg',
+      imageSrc: 'Images/dice.jpg',
       imageAlt: 'Numerous magical dice sit on a table',
     },
     {
-      imageSrc: 'images/wisdom.jpg',
+      imageSrc: 'Images/wisdom.jpg',
       imageAlt: 'A gnome wizard casts a spell',
     },
   ]
@@ -192,7 +192,7 @@ function feedbackRightView(){
   return `<div class="container">
   <h2 class="correct">Correct!</h2>
   
-  <img class="right-image" src="images/correct.svg" alt="celebration confetti">
+  <img class="right-image" src="Images/correct.svg" alt="celebration confetti">
   
   <section>
       <p class="current-score">Current Score</p>
