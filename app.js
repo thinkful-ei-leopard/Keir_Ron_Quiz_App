@@ -157,7 +157,7 @@ function introView() {
   return `
         <div class="container">
         <form>
-            <button class="buttonStyle" type="submit" id="start-quiz-button">Start Quiz</button>
+            <button role="button" class="buttonStyle" type="submit" id="start-quiz-button">Start Quiz</button>
         </form>
         </div>
     `;
@@ -190,7 +190,7 @@ function questionView(){
             <label for="answer-4">${answersArray.answers[3]}</label>
         </div>
     
-        <button class="buttonStyle" type="submit" id="submit-quiz-button">Submit</button>
+        <button role="button" class="buttonStyle" type="submit" id="submit-quiz-button">Submit</button>
     </fieldset>
     <img src="${STORE.images[STORE.questionNumber].imageSrc}" alt="${STORE.images[STORE.questionNumber].imageAlt}">
     </form>
@@ -213,7 +213,7 @@ function feedbackRightView(){
   </section>
   
   <form>
-      <button class="buttonStyle" type="submit" id="next-question-button">Next Question</button>
+      <button role="button" class="buttonStyle" type="submit" id="next-question-button">Next Question</button>
   </form>
   </div>`;
 }
@@ -232,7 +232,7 @@ function feedbackWrongView(){
   </section>
   
   <form>
-      <button class="buttonStyle" type="submit" id="next-question-button">Next Question</button>
+      <button role="button" class="buttonStyle" type="submit" id="next-question-button">Next Question</button>
   </form>
   </div> `;
 }
@@ -248,7 +248,7 @@ function resultsView(){
       <p>Wrong: ${STORE.questionNumber - STORE.score}</p>
     </section>
     <form>
-      <button class="buttonStyle" type="submit" id="new-game-button">Retake Quiz</button>
+      <button role="button" class="buttonStyle" type="submit" id="new-game-button">Retake Quiz</button>
     </form>
     </div>`;
 }
