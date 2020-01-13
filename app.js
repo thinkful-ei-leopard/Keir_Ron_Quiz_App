@@ -156,7 +156,7 @@ function introView() {
   console.log('introView working');
   return `
         <div class="container">
-        <form>
+        <form role="form">
             <button role="button" class="buttonStyle" type="submit" id="start-quiz-button">Start Quiz</button>
         </form>
         </div>
@@ -169,7 +169,7 @@ function questionView(){
   let answersArray = STORE.questions[STORE.questionNumber];
   console.log(answersArray);
   return `<div class="container">
-    <form id="main-form">
+    <form role="form" id="main-form">
     <fieldset role="radiogroup">
         <legend>${answersArray.question}</legend>
         <div role="radio">
@@ -212,7 +212,7 @@ function feedbackRightView(){
       <p>Wrong: ${STORE.questionNumber - STORE.score}</p>
   </section>
   
-  <form>
+  <form role="form">
       <button role="button" class="buttonStyle" type="submit" id="next-question-button">Next Question</button>
   </form>
   </div>`;
@@ -231,7 +231,7 @@ function feedbackWrongView(){
       <p>Wrong: ${STORE.questionNumber - STORE.score}</p>
   </section>
   
-  <form>
+  <form role="form">
       <button role="button" class="buttonStyle" type="submit" id="next-question-button">Next Question</button>
   </form>
   </div> `;
@@ -247,7 +247,7 @@ function resultsView(){
       <p>Right: ${STORE.score}</p>
       <p>Wrong: ${STORE.questionNumber - STORE.score}</p>
     </section>
-    <form>
+    <form role="form">
       <button role="button" class="buttonStyle" type="submit" id="new-game-button">Retake Quiz</button>
     </form>
     </div>`;
