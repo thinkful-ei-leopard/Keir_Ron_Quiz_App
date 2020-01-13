@@ -82,19 +82,6 @@ const STORE = {
     },
   ]
 };
-  
-/**
-   *
-   * Your app should include a render() function, that regenerates
-   * the view each time the store is updated. See your course
-   * material, consult your instructor, and reference the slides
-   * for more details.
-   *
-   * NO additional HTML elements should be added to the index.html file.
-   *
-   * You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
-   *
-   */
 
 // USER STORIES
 // The starter page should have a button to start the quiz => renderQuiz() and introView()
@@ -172,20 +159,20 @@ function questionView(){
     <form role="form" id="main-form">
     <fieldset role="radiogroup">
         <legend>${answersArray.question}</legend>
-        <div role="radio">
+        <div role="radio" class="radio-answers">
             <!-- Inputs with "required" makes it so an answer is required to submit-->
             <input type="radio" id="answer-1" value="${answersArray.answers[0]}" name="dnd" tabindex="0" required />
             <label for="answer-1">${answersArray.answers[0]}</label>
         </div>
-        <div role="radio">
+        <div role="radio" class="radio-answers">
             <input type="radio" id="answer-2" value="${answersArray.answers[1]}" name="dnd" tabindex="0" required />
             <label for="answer-2">${answersArray.answers[1]}</label>
         </div>
-        <div role="radio">
+        <div role="radio" class="radio-answers">
             <input type="radio" id="answer-3" value="${answersArray.answers[2]}"name="dnd" tabindex="0" required />
             <label for="answer-3">${answersArray.answers[2]}</label>
         </div>
-        <div role="radio">
+        <div role="radio" class="radio-answers">
             <input type="radio" id="answer-4" value="${answersArray.answers[3]}"name="dnd" tabindex="0" required />
             <label for="answer-4">${answersArray.answers[3]}</label>
         </div>
