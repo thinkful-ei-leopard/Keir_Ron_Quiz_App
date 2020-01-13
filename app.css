@@ -124,6 +124,10 @@ h1, h2 {
 .incorrect {
     color: red;
 }
+.right-image {
+    border: none;
+    width: 150px;
+}
 
 #start-quiz-button {
     margin-top: 200px;
@@ -149,6 +153,10 @@ h1, h2 {
         margin-bottom: 0;
         margin-top: 0;
     }
+    
+    .right-image {
+        width: 200px;
+    }
 }
   
 @media screen and (min-width: 800px) {
@@ -170,12 +178,14 @@ h1, h2 {
     label {
         font-size: 1.5em;
     }
-
-    img {
+    
+    .question-image {
         width: 50%;
         margin-left: 20px;
     }
-
+    .right-image {
+        width: 220px;
+    }
     .buttonStyle {
         font-size:1.8em;
         padding:16px 42px;
@@ -195,7 +205,8 @@ h1, h2 {
         max-width: 1200px;
     }
     
-    img {
+    .question-image {
         margin-left: 30px;
-    }   
+    }
+
 }

@@ -181,7 +181,7 @@ function questionView(){
     
         <button role="button" class="buttonStyle" type="submit" id="submit-quiz-button">Submit</button>
     </fieldset>
-    <img src="${STORE.images[STORE.questionNumber].imageSrc}" alt="${STORE.images[STORE.questionNumber].imageAlt}">
+    <img class="question-image" src="${STORE.images[STORE.questionNumber].imageSrc}" alt="${STORE.images[STORE.questionNumber].imageAlt}">
     </form>
     </div>`;
 }
@@ -192,7 +192,7 @@ function feedbackRightView(){
   return `<div class="container">
   <h2 class="correct">Correct!</h2>
   
-  <img src="images/correct.svg" alt="celebration confetti">
+  <img class="right-image" src="images/correct.svg" alt="celebration confetti">
   
   <section>
       <p class="current-score">Current Score</p>
