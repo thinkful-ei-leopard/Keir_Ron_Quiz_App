@@ -48,18 +48,37 @@ button {
 }
 
 
-.container {
+.container, footer {
     max-width: 500px;
     margin: 0 auto;
 }
 
+legend {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+    color: #bd3311;
+}
+
 img {
     width:50%;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 3px solid black;
 }
 
 form {
     display: flex; 
     flex-direction: column-reverse;
+}
+
+label {
+    font-size: 18px;
+}
+
+footer > p {
+    font-size: 14px;
 }
 
 h1, h2 {
@@ -71,6 +90,14 @@ h1, h2 {
 
 .incorrect {
     color: red;
+}
+
+#start-quiz-button {
+    margin-top: 300px;
+}
+
+#submit-quiz-button {
+    margin-top: 50px;
 }
 @media screen and (min-width: 500px) {
 
