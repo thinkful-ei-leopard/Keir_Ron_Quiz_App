@@ -234,7 +234,7 @@ function resultsView(){
   <div class="container">
     <h2>End of Game</h2>
     <section>
-      <p class="current-score">Final Score ${STORE.score / STORE.questions.length * 100} %</p>
+      <p class="current-score">Final Score: ${STORE.score / STORE.questions.length * 100} %</p>
       <p class="correct">Right: ${STORE.score}</p>
       <p class="incorrect">Wrong: ${STORE.questionNumber - STORE.score}</p>
     </section>

@@ -133,8 +133,17 @@ h1, h2 {
     form {
         flex-direction: row;
     }
+    
+    img {
+        width: 50%;
+    }
 }
   
 @media screen and (min-width: 800px) {
-
+    .container {
+        max-width: 800px;
+    }
+    img {
+        width: 50%;
+    }
 }
