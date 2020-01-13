@@ -116,7 +116,7 @@ function renderQuiz() {
   if(STORE.quizStarted === false) {
     $('main').html(introView());
   }
-  else if(STORE.questionNumber <= STORE.questions.length && STORE.questionNumber >= 0) {
+  else if(STORE.questionNumber < STORE.questions.length && STORE.questionNumber >= 0) {
     if(STORE.questionAnswered === false) {
       console.log('render part 2 works');
       $('main').html(questionView());
@@ -196,8 +196,8 @@ function feedbackRightView(){
   
   <section>
       <p class="current-score">Current Score</p>
-      <p>Right: ${STORE.score}</p>
-      <p>Wrong: ${STORE.questionNumber - STORE.score}</p>
+      <p class="correct">Right: ${STORE.score}</p>
+      <p class="incorrect">Wrong: ${STORE.questionNumber - STORE.score}</p>
   </section>
   
   <form role="form">
@@ -208,15 +208,18 @@ function feedbackRightView(){
 
 function feedbackWrongView(){
   // this function handles the loading of feedbackWrongView() page
+  // We have to pass the value of STORE.questionNumber to a number variable, otherwise when we
+  // do currentQuestion - 1 it will pass by Reference instead of value and break the quiz!
+  let currentQuestion = STORE.questionNumber; 
   return `<div class="container">
   <h2 class="incorrect">Incorrect!</h2>
   
-  <h3>The right answer was: ${STORE.questions[STORE.questionNumber - 1].correctAnswer}</h3>
+  <h3>The right answer was: "${STORE.questions[currentQuestion - 1].correctAnswer}"</h3>
   
   <section>
       <p class="current-score">Current Score</p>
-      <p>Right: ${STORE.score}</p>
-      <p>Wrong: ${STORE.questionNumber - STORE.score}</p>
+      <p class="correct">Right: ${STORE.score}</p>
+      <p class="incorrect">Wrong: ${STORE.questionNumber - STORE.score}</p>
   </section>
   
   <form role="form">
@@ -231,9 +234,9 @@ function resultsView(){
   <div class="container">
     <h2>End of Game</h2>
     <section>
-      <p>Final Score ${STORE.score / STORE.questions.length * 100} %</p>
-      <p>Right: ${STORE.score}</p>
-      <p>Wrong: ${STORE.questionNumber - STORE.score}</p>
+      <p class="current-score">Final Score ${STORE.score / STORE.questions.length * 100} %</p>
+      <p class="correct">Right: ${STORE.score}</p>
+      <p class="incorrect">Wrong: ${STORE.questionNumber - STORE.score}</p>
     </section>
     <form role="form">
       <button role="button" class="buttonStyle" type="submit" id="new-game-button">Retake Quiz</button>

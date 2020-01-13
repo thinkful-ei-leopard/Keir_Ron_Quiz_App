@@ -93,6 +93,10 @@ footer > p {
     font-size: 14px;
 }
 
+section > p {
+    margin-left: 15px;
+}
+
 h1, h2 {
     text-align: center;
 }
