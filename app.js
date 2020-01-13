@@ -116,7 +116,7 @@ function renderQuiz() {
   if(STORE.quizStarted === false) {
     $('main').html(introView());
   }
-  else if(STORE.questionNumber < STORE.questions.length && STORE.questionNumber >= 0) {
+  else if(STORE.questionNumber <= STORE.questions.length && STORE.questionNumber >= 0) {
     if(STORE.questionAnswered === false) {
       console.log('render part 2 works');
       $('main').html(questionView());
@@ -156,6 +156,8 @@ function questionView(){
   let answersArray = STORE.questions[STORE.questionNumber];
   console.log(answersArray);
   return `<div class="container">
+    <!-- This is keeping track of the current question (i.e. Question 2 of 5-->
+    <h2>Question ${STORE.questionNumber+1} of ${STORE.questions.length}</h2>
     <form role="form" id="main-form">
     <fieldset role="radiogroup">
         <legend>${answersArray.question}</legend>
@@ -181,13 +183,12 @@ function questionView(){
     </fieldset>
     <img src="${STORE.images[STORE.questionNumber].imageSrc}" alt="${STORE.images[STORE.questionNumber].imageAlt}">
     </form>
-    <!-- This is keeping track of the current question (i.e. Question 2 of 5-->
-    <h2>Question ${STORE.questionNumber+1} of ${STORE.questions.length}</h2>
     </div>`;
 }
 
 function feedbackRightView(){
   // this function handles the loading of feedbackRightView() page
+  
   return `<div class="container">
   <h2 class="correct">Correct!</h2>
   
