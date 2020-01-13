@@ -194,7 +194,7 @@ function feedbackRightView(){
   <img src="/images/correct.svg" alt="celebration confetti">
   
   <section>
-      <p>Current Score</p>
+      <p class="current-score">Current Score</p>
       <p>Right: ${STORE.score}</p>
       <p>Wrong: ${STORE.questionNumber - STORE.score}</p>
   </section>
@@ -210,10 +210,10 @@ function feedbackWrongView(){
   return `<div class="container">
   <h2 class="incorrect">Incorrect!</h2>
   
-  <h3>The right answer was: ${STORE.questions[STORE.questionNumber].correctAnswer}</h3>
+  <h3>The right answer was: ${STORE.questions[STORE.questionNumber - 1].correctAnswer}</h3>
   
   <section>
-      <p>Current Score</p>
+      <p class="current-score">Current Score</p>
       <p>Right: ${STORE.score}</p>
       <p>Wrong: ${STORE.questionNumber - STORE.score}</p>
   </section>
